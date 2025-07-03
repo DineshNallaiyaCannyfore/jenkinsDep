@@ -1,0 +1,34 @@
+<form [formGroup]="userForm" (ngSubmit)="ngOnSubmit()">
+    <label>name</label>
+    <input type="text" formControlName="name">
+    <!-- <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+        <small *ngIf="userForm.get('name')?.errors?.['required']">
+            reuired
+        </small>
+    </div> -->
+    <label>last name</label>
+    <input type="text" formControlName="last">
+    <div *ngIf="userForm.get('last')?.invalid && userForm.get('last')?.touched">
+        <small *ngIf="userForm.get('last')?.errors?.['specialCharNotAllowed']">
+            script tag not accepted
+        </small>
+        <small *ngIf="userForm.get('last')?.errors?.['pattern']">
+            Miss matched
+        </small>
+    </div><br>
+    <input type="checkbox" id="-p" formControlName="isCheck" (change)="isChanged($event)" />
+    <label for="-p">add validaiton</label><br>
+
+    <label>email</label>
+    <input type="text" formArrayName="email">
+    <button type="submit" (click)="ngOnSubmit()">send</button>
+</form>
+<br>
+
+<input type="text" #seacrh [(ngModel)]="searchText" (input)="eventChang($event)"><br>
+
+<div>
+    <ng-content select="[div1]"></ng-content>
+    <ng-content select="[div2]"></ng-content>
+    <ng-content select="[div3]"></ng-content>
+</div>

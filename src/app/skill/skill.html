@@ -1,0 +1,9 @@
+<p>skill works!</p>
+<div class="skill-wrapper">
+    <div class="tag">
+        @for(skill of skills;let ind = $index; track ind ){
+        <div class="tagList">{{skill}}<span (click)="removeItem(ind)"> X</span> </div>
+        }
+    </div>
+    <div class="tagInput" contenteditable="true" #inputbox (keydown)="enderedSkill($event)"></div>
+</div>

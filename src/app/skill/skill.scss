@@ -1,0 +1,38 @@
+.skill-wrapper {
+    background: rgb(232, 232, 234);
+    border: 1px solid gray;
+    height: 250px;
+    display: flex;
+
+    .tagInput {
+        border: none;
+        min-width: 100px;
+        height: 20px;
+        padding: 3px;
+        margin: 2px;
+    }
+
+    .tagInput:focus {
+        border: none;
+    }
+
+    .tag {
+        padding: 3px;
+        display: flex;
+
+        .tagList {
+
+            gap: 2px;
+            border: 1px solid;
+            height: 20px;
+            padding: 2px 3px;
+            margin: 2px;
+
+            span {
+                color: black;
+                margin-left: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+}
