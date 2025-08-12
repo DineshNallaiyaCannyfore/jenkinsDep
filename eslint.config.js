@@ -2,10 +2,20 @@
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
-
+const no_console  = require("./esLintRules/no-console-log");
+const no_alert  = require("./esLintRules/no-alert");
+const customRules ={
+  ...no_console,
+  ...no_alert
+}
 module.exports = tseslint.config(
   {
     files: ["**/*.ts"],
+     plugins: {
+      custom: {
+        rules: customRules 
+      }
+    },
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -13,7 +23,13 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
+    ignores: [
+      'dist/**',
+      '*.spec.ts',
+      'node_modules/**'
+    ],
     rules: {
+
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -30,7 +46,9 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
-      "no-console": "warn",
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
+      "custom/no-alert": "error"
     },
   },
   {
